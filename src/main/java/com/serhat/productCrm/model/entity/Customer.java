@@ -3,6 +3,7 @@ package com.serhat.productCrm.model.entity;
 import javax.persistence.*;
 
 @Entity
+@NamedQuery(name = "Customer.countCustomer",query = "select count  (c) from Customer  c")
 @Table(name = "customer")
 public class Customer extends BaseEntity {
 

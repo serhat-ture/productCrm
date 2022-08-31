@@ -71,7 +71,7 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     @Transactional(readOnly = true)
     public long getAllCountInCustomer() {
-        return this.customerRepository.count();
+        return this.customerRepository.countCustomer();
     }
 
     @Override

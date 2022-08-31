@@ -75,7 +75,7 @@ public class CustomerController {
         return new ResponseEntity<>
                 (customerService.getAllCountInCustomer(), HttpStatus.OK);
     }
-    //4
+    //we use NamedQuery -- 4
 
     @GetMapping("/getByName")
     @ResponseStatus(HttpStatus.OK)
