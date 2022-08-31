@@ -6,13 +6,11 @@ import com.serhat.productCrm.repository.CustomerRepository;
 import com.serhat.productCrm.service.CustomerService;
 import com.serhat.productCrm.utils.ModelMapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,42 +49,15 @@ public class CustomerServiceImp implements CustomerService {
 
 
 
-    @Override
-    @Transactional(readOnly = true)
-    public ResponseEntity<CustomerDTO> getCustomerById(Long id) {
-        Boolean isExists = this.customerRepository.existsById(id);
-        if (isExists) {
-            Customer customer =
-                    this.customerRepository.findById(id).get();
-            CustomerDTO customerDTO = new CustomerDTO();
-            customerDTO.setSurname(customer.getSurname());
-            customerDTO.setName(customer.getName());
-            customerDTO.setAge(customer.getAge());
-            return new ResponseEntity<>(customerDTO, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
-    }
 
     @Override
     @Transactional(readOnly = true)
     public long getAllCountInCustomer() {
+
         return this.customerRepository.countCustomer();
     }
 
-    @Override
-    @Transactional
-    public void addListCustomer(List<CustomerDTO> customerDTOList) {
-        List<Customer> customerList = new ArrayList<>();
-        for (CustomerDTO customerDTO : customerDTOList) {
-            Customer customer = new Customer();
-            customer.setAge(customerDTO.getAge());
-            customer.setSurname(customerDTO.getSurname());
-            customer.setName(customerDTO.getName());
-            customerList.add(customer);
-        }
-        this.customerRepository.saveAll(customerList);
-    }
+
 
     @Override
     @Transactional(readOnly = true)

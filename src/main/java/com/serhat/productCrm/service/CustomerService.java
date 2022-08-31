@@ -12,10 +12,8 @@ public interface CustomerService {
     void updateCustomer(CustomerDTO customerDTO);
     void deleteCustomer(Long id);
 
-    ResponseEntity<CustomerDTO> getCustomerById(Long id);
 
     long getAllCountInCustomer();
-    void addListCustomer(List<CustomerDTO> customerDTOList);
 
     List<CustomerDTO> getCustomerByName(String name);
 

@@ -44,12 +44,7 @@ public class CustomerController {
 }
 ]
      */
-    @PostMapping("addList")
-    public ResponseEntity addListCustomer(@RequestBody List<CustomerDTO> customerDTOList) {
-        this.customerService.addListCustomer(customerDTOList);
-        return new ResponseEntity
-                ("Başarılı", HttpStatus.CREATED);
-    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
@@ -64,11 +59,7 @@ public class CustomerController {
         this.customerService.updateCustomer(customerDTO);
     }
 
-    @GetMapping("findById")
-    public ResponseEntity<CustomerDTO> getCustomerById(@RequestParam(value = "id")
-                                                               Long id) {
-        return customerService.getCustomerById(id);
-    }
+
 
     @GetMapping("allCount")
     public ResponseEntity<Long> getAllCountInCustomer() {
